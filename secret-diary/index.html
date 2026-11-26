@@ -22,8 +22,10 @@ button{ background:#ff4d94; color:white; border:none; padding:10px 20px; border-
 <div class="box" id="diaryBox" style="display:none;">
 <h2>Dear Diary... 💖</h2>
 <p id="date"></p>
-<p>Ajj ka Mood: 😍 🥰 😢 😡 😴</p>
-<textarea id="diary" rows="8" placeholder="Aaj kya hua? Likho..."></textarea>
+ <p>Ajj ka Mood: <span onclick="setMood('😍')" style="font-size:26px;cursor:pointer">😍</span> <span onclick="setMood('🥰')" style="font-size:26px;cursor:pointer">🥰</span> <span onclick="setMood('🙂')" style="font-size:26px;cursor:pointer">🙂</span> <span onclick="setMood('😡')" style="font-size:26px;cursor:pointer">😡</span> <span onclick="setMood('🥹')" style="font-size:26px;cursor:pointer">🥹</span></p>
+<p id="moodShow">Mood: -</p>                                                                                                                                                                                                                                                                     
+<textarea id="diary" rows="8" placeholder="Aaj kya hua? Likho..."></textarea>  
+
 <br>
 <button onclick="save()">Save 💾</button>
 <button onclick="lock()">Lock 🔒</button>
@@ -31,6 +33,7 @@ button{ background:#ff4d94; color:white; border:none; padding:10px 20px; border-
 </div>
 
 <script>
+function setMood(m){ document.getElementById("moodShow").innerText = "Mood: " + m; }  
 function unlock(){
   if(document.getElementById("pass").value=="ayesha$"){
     document.getElementById("lockBox").style.display="none";
