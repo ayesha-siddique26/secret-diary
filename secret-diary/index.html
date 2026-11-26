@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>My Secret Diary</title>
+<style>
+body{ background:#ffe6f2; font-family:Arial; text-align:center; padding:30px; }
+.box{ background:white; padding:25px; border-radius:20px; max-width:450px; margin:auto; box-shadow:0 0 15px pink; }
+input, textarea{ width:90%; padding:10px; margin:10px; border:2px solid pink; border-radius:10px; }
+button{ background:#ff4d94; color:white; border:none; padding:10px 20px; border-radius:10px; cursor:pointer; }
+</style>
+</head>
+<body>
+<div class="box" id="lockBox">
+<h2>🔒 My Secret Diary 💜</h2>
+<p>Password likho</p>
+<input type="password" id="pass" placeholder="Password">
+<br>
+<button onclick="unlock()">Open Diary</button>
+<p id="msg"></p>
+</div>
+
+<div class="box" id="diaryBox" style="display:none;">
+<h2>Dear Diary... 💖</h2>
+<p id="date"></p>
+<p>Ajj ka Mood: 😍 🥰 😢 😡 😴</p>
+<textarea id="diary" rows="8" placeholder="Aaj kya hua? Likho..."></textarea>
+<br>
+<button onclick="save()">Save 💾</button>
+<button onclick="lock()">Lock 🔒</button>
+<p id="saved"></p>
+</div>
+
+<script>
+function unlock(){
+  if(document.getElementById("pass").value=="ayesha$"){
+    document.getElementById("lockBox").style.display="none";
+    document.getElementById("diaryBox").style.display="block";
+    document.getElementById("date").innerHTML = "Date: " + new Date().toDateString();
+    document.getElementById("diary").value = localStorage.getItem("myDiary") || "";
+  } else {
+    document.getElementById("msg").innerHTML="Galat Password! 😢";
+  }
+}
+function save(){
+  localStorage.setItem("myDiary", document.getElementById("diary").value);
+  document.getElementById("saved").innerHTML="Save ho gaya! 💜";
+}
+function lock(){
+  document.getElementById("diaryBox").style.display="none";
+  document.getElementById("lockBox").style.display="block";
+  document.getElementById("pass").value="";
+}
+</script>
+</body>
+</html>
+
+
+
